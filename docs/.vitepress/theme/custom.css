@@ -34,6 +34,45 @@
   vertical-align: top;
 }
 
+.guide-figure {
+  margin: 28px 0;
+  padding: 12px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  background: var(--vp-c-bg-soft);
+}
+
+.guide-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.guide-figure figcaption {
+  padding: 10px 6px 2px;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.guide-figure .figure-dark,
+.dark .guide-figure .figure-light { display: none; }
+.dark .guide-figure .figure-dark { display: block; }
+
+.guide-summary {
+  margin: 20px 0 28px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--vp-c-brand-soft);
+  border-left: 3px solid var(--vp-c-brand-1);
+}
+
+.guide-summary p { margin: 0 !important; }
+.guide-summary p + p { margin-top: 6px !important; }
+
+.VPHome .VPFeature .icon { font-size: 24px; }
+
 @media (min-width: 640px) {
   .VPHome .vp-doc { padding-inline: 48px; }
 }

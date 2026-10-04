@@ -7,6 +7,12 @@ description: 添加 Micro Build AI 服务商和模型，在 Cherry Studio 开始
 
 适合想用桌面客户端聊天、阅读和整理文字的用户。本页使用自定义 **OpenAI** 服务商接入，先完成普通文本对话。
 
+<div class="guide-summary">
+
+**🍒 接入路线：** 添加服务商 → 填写地址和密钥 → 添加模型 → 开始聊天。
+
+</div>
+
 ## 准备工作
 
 - 已从 [Cherry Studio 官网](https://cherry-ai.com/)安装客户端。
@@ -45,9 +51,7 @@ Cherry Studio 通常会自动追加 `/v1/chat/completions`，所以本页填写�
 
 返回聊天界面，选中 Micro Build AI 服务商下的目标模型，发送一条简短消息。
 
-::: info 配置截图占位
-待补充「添加 Micro Build AI 服务商」「填写地址与掩码密钥」「选择模型并聊天」三张脱敏截图。无需导入任何其他平台的品牌、配置或截图。
-:::
+<GuideFigure name="client-fields" alt="Cherry Studio 配置示意，分别填写平台地址、完整个人密钥和模型 ID，再选择服务商与模型开始聊天" caption="配置示意图，并非 Cherry Studio 界面截图。按本页规则填写根地址 https://ai.mbuild.top，密钥只在自己的客户端中填完整值。" />
 
 ## 验证配置
 

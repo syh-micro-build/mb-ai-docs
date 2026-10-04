@@ -33,9 +33,7 @@ Cursor 官方当前说明：自定义 API Key 支持聊天模型，OpenAI 接入
 
 如果没有自定义地址入口，或当前版本拒绝所选模型，请先按 Cursor 官方说明确认版本支持情况，也可以使用[Cherry Studio](/tools/cherry-studio)验证平台接入。
 
-::: info 配置界面占位
-待补充 Cursor 设置截图：显示 Micro Build AI 地址与可用的聊天模型 ID；API Key 只显示掩码。具体按钮名称以当前客户端界面为准。
-:::
+<GuideFigure name="client-fields" alt="客户端配置示意，分别核对平台地址、个人密钥和当前支持的模型 ID；Cursor 使用带 /v1 的地址" caption="📝 配置示意图，并非 Cursor 界面截图。Cursor 地址填写 https://ai.mbuild.top/v1；按钮和支持范围以当前版本为准。" />
 
 ## 验证配置
 

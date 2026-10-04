@@ -9,7 +9,7 @@ description: 排查 API Key 无效、余额与权限、模型不存在、限流�
 
 ## 先检查接入三要素
 
-1. **地址**：通常是 `https://ai.mbuild.top/v1`；[Cherry Studio](/tools/cherry-studio)按它的自动补全规则填写。
+1. **地址**：Codex、Cursor 通常是 `https://ai.mbuild.top/v1`；[Claude Code](/tools/claude-code)和[Cherry Studio](/tools/cherry-studio)按各自教程填写根地址。
 2. **密钥**：从平台复制完整值，确认未停用、删除或过期；API Key 输入框不加 `Bearer `。
 3. **模型**：复制模型调用 ID，确认当前可用、密钥有权限，并匹配客户端所需协议。
 
@@ -33,7 +33,7 @@ description: 排查 API Key 无效、余额与权限、模型不存在、限流�
 
 - 以平台当前模型列表为准，复制完整调用 ID，注意大小写与前后空格。
 - 确认密钥所在分组允许该模型。
-- 确认协议兼容：Codex 需要 Responses；Cursor 和本版 Cherry Studio 教程使用兼容聊天接口。
+- 确认协议兼容：Codex 需要 Responses；Claude Code 需要 Anthropic Messages 和可用 Claude 模型；Cursor 和本版 Cherry Studio 教程使用兼容聊天接口。
 - 本站 `gpt-5.6-sol` 是示例 ID，不代表所有用户和工具都可调用它。
 
 ## 404：找不到接口 {#not-found}
@@ -41,6 +41,14 @@ description: 排查 API Key 无效、余额与权限、模型不存在、限流�
 检查是否把 `/docs/`、网页地址或完整 `/chat/completions`、`/responses` 路径填进 Base URL。多数工具应只填写 `https://ai.mbuild.top/v1`。
 
 Cherry Studio 应按[地址填写说明](/tools/cherry-studio)操作；Codex 的 `/responses` 不可用时，联系管理员确认该模型与分组是否支持这一协议。
+
+Claude Code 填写根地址 `https://ai.mbuild.top`；出现 `/v1/v1/messages` 时，先去掉多余的 `/v1`，再确认 Messages 接入权限。
+
+## CC Switch 已切换，但工具仍用旧配置 {#cc-switch}
+
+确认在对应应用下点击了 Micro Build AI 卡片的「启用」。Codex 需要退出旧会话并重新启动；终端环境变量、启动参数和组织配置也可能影响实际使用的服务商。
+
+如果曾手动配置 Claude Code，核对是否仍保留旧的 `ANTHROPIC_BASE_URL`、`ANTHROPIC_AUTH_TOKEN` 或 `ANTHROPIC_API_KEY`。清除旧值后再启动并核对使用记录，详见 [CC Switch 教程](/tools/cc-switch)。
 
 ## 429：限流或并发限制 {#rate-limit}
 
@@ -70,14 +78,14 @@ Cherry Studio 应按[地址填写说明](/tools/cherry-studio)操作；Codex 的
 
 ## 找不到教程里的按钮或入口 {#interface}
 
-界面可能随客户端或平台版本更新，管理员也可能关闭部分入口。按功能名称查找；截图占位会在实际界面核对后补充。找不到充值、注册或模型权限时，联系平台管理员。
+界面可能随客户端或平台版本更新，管理员也可能关闭部分入口。按功能名称查找；本站登录图为真实公开页面截图，配置图标注了「示意图」，用于说明填写顺序。找不到充值、注册或模型权限时，联系平台管理员。
 
 ## 需要管理员协助时，提供什么 {#support}
 
 | 提供的信息 | 示例或说明 |
 | --- | --- |
 | 发生时间与时区 | 例如北京时间 14:30，方便核对记录。 |
-| 工具与版本 | Codex、Cursor 或 Cherry Studio 的版本。 |
+| 工具与版本 | Codex、Claude Code、CC Switch、Cursor 或 Cherry Studio 的版本。 |
 | 模型 ID | 客户端实际填写的模型调用 ID。 |
 | 错误信息 | HTTP 状态码与已脱敏的错误正文。 |
 | Request ID | 如果响应或记录中有此字段，提供完整 ID。 |
