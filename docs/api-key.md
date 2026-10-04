@@ -11,27 +11,29 @@ API Key 是客户端调用 Micro Build AI 的凭证。持有完整密钥的人�
 
 1. 登录 [Micro Build AI](https://ai.mbuild.top/)。
 2. 打开「API Key」或「API 密钥」页面，选择创建。
-3. 输入用途名称，例如 `my-codex`、`my-cursor` 或 `my-cherry-studio`。
+3. 输入用途名称，例如 `my-codex`、`my-claude-code`、`my-gemini`、`my-antigravity` 或 `my-cherry-studio`。
 4. 如果页面提供分组或权限选项，选择管理员分配给你的可用范围。模型权限与此有关；不清楚时先联系管理员。
 5. 如果当前页面支持额度、有效期或访问限制，按需要设置；初次配置时确认这些限制不会拦截自己的请求。
 6. 保存后按界面提示复制完整密钥，保存在密码管理器中。
 
 不同部署版本的字段与按钮可能略有差异，以 Micro Build AI 当前页面为准。
 
-::: info Micro Build AI 截图占位
-待补充「API Key 列表」与「创建 API Key」两张截图。演示名称使用 `my-codex`，密钥显示为掩码，账号和余额等个人信息需脱敏。
-:::
+<GuideFigure name="api-key" alt="创建密钥的配置示意：填写用途名称与管理员分配的权限，保存后复制完整值并保管，公开图片只显示掩码" caption="🔑 配置示意图，并非平台实际截图。密钥和字段以自己的页面为准，图中掩码无法用于调用。" />
 
 ## 复制并填写到客户端
 
 - 复制完整值，不要把 `sk-****` 之类的掩码当成真实密钥。
 - 客户端的 API Key 输入框只填密钥，不加 `Bearer `、引号、空格或换行。
-- API 请求使用 `Authorization: Bearer <密钥>`，其中 `Bearer` 是请求头格式的一部分。
+- 手动调用 OpenAI 兼容接口时，通常使用 `Authorization: Bearer <密钥>`；Gemini 原生客户端使用自己的认证格式，例如 `x-goog-api-key`，按对应教程配置即可。
 - Base URL 与模型 ID 是另外两项信息，不能填到密钥输入框里。
 
 | 使用工具 | 接入教程 |
 | --- | --- |
 | Codex | [配置个人服务商与环境变量](/tools/codex) |
+| Claude Code | [配置 Anthropic Messages 接入](/tools/claude-code) |
+| Gemini CLI | [配置 Gemini 原生接口与 API key 认证](/tools/gemini) |
+| Antigravity | [配置 CLI 的 Gemini 模式与了解桌面 IDE](/tools/antigravity) |
+| CC Switch | [为 Codex 与 Claude Code 管理配置](/tools/cc-switch) |
 | Cursor | [配置 API Key 与自定义地址](/tools/cursor) |
 | Cherry Studio | [添加服务商与模型](/tools/cherry-studio) |
 

@@ -62,6 +62,20 @@ for (const page of pages) {
   if (!/<html[^>]+lang="zh-CN"/.test(source)) errors.add(`${relative}: missing zh-CN language`)
   if (!/<title>[^<]*Micro Build AI[^<]*<\/title>/.test(source)) errors.add(`${relative}: missing brand title`)
 
+  for (const match of source.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)) {
+    const attributes = match[1]
+    if (/\bhref="https:\/\/ai\.mbuild\.top(?:\/|\")/.test(attributes) && !/\btarget="_self"/.test(attributes)) {
+      errors.add(`${relative}: platform link must open in the current tab`)
+    }
+  }
+  if (relative !== '404.html' && !source.includes('>主题<')) errors.add(`${relative}: missing Chinese theme label`)
+
+  for (const match of source.matchAll(/<img\b([^>]*)>/g)) {
+    if (/\bsrc="\/docs\/images\//.test(match[1]) && !/\balt="[^"]+"/.test(match[1])) {
+      errors.add(`${relative}: tutorial image needs alternative text`)
+    }
+  }
+
   for (const match of source.matchAll(/\b(?:href|src)=(?:"([^"]*)"|'([^']*)')/g)) {
     const value = decodeAttribute(match[1] ?? match[2])
     if (!value || /^(?:data:|mailto:|tel:|javascript:)/i.test(value)) continue
@@ -81,7 +95,7 @@ for (const page of pages) {
   }
 }
 
-const requiredPages = ['index.html', 'getting-started.html', 'api-key.html', 'tools/codex.html', 'tools/cursor.html', 'tools/cherry-studio.html', 'faq.html', '404.html']
+const requiredPages = ['index.html', 'getting-started.html', 'api-key.html', 'tools/codex.html', 'tools/claude-code.html', 'tools/gemini.html', 'tools/antigravity.html', 'tools/cc-switch.html', 'tools/cursor.html', 'tools/cherry-studio.html', 'faq.html', '404.html']
 for (const page of requiredPages) {
   if (!await exists(path.join(root, page))) errors.add(`Missing MVP page: ${page}`)
 }

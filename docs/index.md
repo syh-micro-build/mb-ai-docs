@@ -6,6 +6,9 @@ hero:
   name: Micro Build AI
   text: 让 AI 工具，成为日常工作的一部分
   tagline: 登录、创建密钥、连接工具。从第一次成功调用开始。
+  image:
+    src: /logo.png
+    alt: Micro Build AI 蓝绿原子轨道 Logo
   actions:
     - theme: brand
       text: 5 分钟开始使用
@@ -14,18 +17,42 @@ hero:
       text: 创建 API Key
       link: /api-key
     - theme: alt
-      text: 进入平台 ↗
+      text: 进入平台
       link: https://ai.mbuild.top/
+      target: _self
 features:
-  - title: Codex
+  - icon: '💻'
+    title: Codex
     details: 在终端里阅读代码、解决问题。使用自定义服务商接入 Micro Build AI。
     link: /tools/codex
     linkText: 配置 Codex
-  - title: Cursor
+  - icon: '✨'
+    title: Claude Code
+    details: 在终端里使用 Claude 编程助手，按 Anthropic Messages 接口连接平台。
+    link: /tools/claude-code
+    linkText: 配置 Claude Code
+  - icon: '🔀'
+    title: CC Switch
+    details: 用图形界面分别管理 Codex 与 Claude Code 的服务商配置。
+    link: /tools/cc-switch
+    linkText: 配置 CC Switch
+  - icon: '💎'
+    title: Gemini CLI
+    details: 在终端中使用 Gemini 原生接口，配置平台密钥、地址与可用模型。
+    link: /tools/gemini
+    linkText: 配置 Gemini CLI
+  - icon: '🚀'
+    title: Antigravity
+    details: 连接 Antigravity CLI，并了解桌面 IDE 的使用方式与接入范围。
+    link: /tools/antigravity
+    linkText: 查看 Antigravity 教程
+  - icon: '📝'
+    title: Cursor
     details: 在编辑器中配置自定义 API。先确认当前版本与模型的兼容范围。
     link: /tools/cursor
     linkText: 配置 Cursor
-  - title: Cherry Studio
+  - icon: '🍒'
+    title: Cherry Studio
     details: 添加服务商与模型，在桌面客户端开始第一段对话。
     link: /tools/cherry-studio
     linkText: 配置 Cherry Studio
@@ -33,9 +60,7 @@ features:
 
 ## 第一次使用，跟着这条路径走
 
-| 1. 登录与余额 | 2. 准备接入信息 | 3. 开始使用 |
-| --- | --- | --- |
-| 打开平台，注册或登录；在充值入口确认余额。 | 创建 API Key，复制地址和当前可用的模型 ID。 | 按工具教程填写配置，发送一条测试消息，再查看使用记录。 |
+<GuideFigure name="quick-start" alt="首次接入三步：登录并确认余额，创建密钥并复制地址与模型，配置工具后核对回复和使用记录" caption="先完成一次小请求。回复、使用记录和费用都能对应上，就可以开始自己的任务了。" />
 
 [从快速开始进入 →](/getting-started)
 
@@ -43,7 +68,7 @@ features:
 
 | 信息 | 填什么 |
 | --- | --- |
-| API 地址（Base URL） | 通常为 `https://ai.mbuild.top/v1`；Cherry Studio 请按[专属教程](/tools/cherry-studio)填写。 |
+| API 地址（Base URL） | Codex、Cursor 通常填 `https://ai.mbuild.top/v1`；[Claude Code](/tools/claude-code)、[Cherry Studio](/tools/cherry-studio)、[Gemini CLI](/tools/gemini) 与 [Antigravity CLI](/tools/antigravity) 按各自教程填写根地址或指定前缀。 |
 | API Key | 在 Micro Build AI 创建的个人密钥，完整值只保存在自己的工具或密码管理器中。 |
 | 模型（Model） | 从平台模型列表复制模型 ID，以当前可用模型及你的密钥权限为准。 |
 

@@ -7,6 +7,14 @@ description: 在 Codex CLI 中配置 Micro Build AI 服务商、API 地址和环
 
 适合希望在终端里阅读、修改和检查代码的用户。本页以 **Codex CLI** 为配置入口；需要先有 Micro Build AI 密钥，以及支持 Responses API 的可用模型。
 
+<div class="guide-summary">
+
+**💻 接入路线：** 合并用户配置 → 在当前终端提供密钥 → 启动并测试。
+
+偏好图形界面？也可以按 [CC Switch 教程](/tools/cc-switch#codex)管理服务商。
+
+</div>
+
 ## 准备工作
 
 - 已安装 Codex CLI。未安装时，按 [Codex 官方安装文档](https://developers.openai.com/codex/cli/)安装；npm 安装命令为 `npm install -g @openai/codex`。
@@ -21,6 +29,8 @@ description: 在 Codex CLI 中配置 Micro Build AI 服务商、API 地址和环
 | 示例模型 | `gpt-5.6-sol`，替换为平台当前可用且支持 Responses 的模型 ID |
 
 ## 快速配置
+
+<GuideFigure name="codex" alt="Codex 配置示意：用户 config.toml 填入带 /v1 的平台地址，在当前终端用环境变量提供密钥，启动后验证模型回复和平台记录" caption="配置示意图。手动配置时，用户配置保存服务商信息，当前终端提供密钥。" />
 
 ### 1. 合并用户配置
 
@@ -84,8 +94,8 @@ macOS 默认使用 zsh 时，可先运行 `bash`，再执行上面的 bash 示�
 2. 确认收到有效回复。
 3. 回到平台使用记录，核对本次模型、密钥和费用。
 
-::: info 配置示意占位
-待补充使用 Micro Build AI 服务商的 Codex 终端截图，只展示服务商、模型与测试回复，不展示密钥或业务代码。
+::: tip ✅ 完成标志
+有效回复与平台本次使用记录对应上，就完成了接入。先完成小请求，再交给它处理实际任务。
 :::
 
 ## 切换模型

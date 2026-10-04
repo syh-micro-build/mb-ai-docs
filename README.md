@@ -25,7 +25,7 @@ npm run check
 npm run docs:preview
 ```
 
-`check` 依次检查 TypeScript 配置、构建 VitePress，再验证生成 HTML 的语言、品牌标题、MVP 页面、内部链接、锚点与资源路径。VitePress 构建保留死链接检查，不通过忽略错误绕过。
+`check` 依次检查 TypeScript 配置、构建 VitePress，再验证生成 HTML 的语言、品牌标题、MVP 页面、内部链接、锚点与资源路径，以及平台链接在当前标签页打开、「主题」文字和教程图片的替代文本。VitePress 构建保留死链接检查，不通过忽略错误绕过。
 
 默认构建产物为 `docs/.vitepress/dist/`，预览地址通常是 <http://localhost:4173/docs/>。开发与预览命令以终端输出的端口为准。
 
@@ -40,10 +40,16 @@ docs/
 ├── api-key.md               # 创建、复制、管理与安全
 ├── tools/
 │   ├── codex.md             # Responses / 自定义服务商
+│   ├── claude-code.md       # Anthropic Messages / 环境变量
+│   ├── gemini.md            # Gemini CLI / 原生接口与认证
+│   ├── antigravity.md       # CLI 接入 / 桌面 IDE 入门与边界
+│   ├── cc-switch.md         # 按应用管理 Codex 与 Claude 配置
 │   ├── cursor.md            # BYOK 与版本、模型兼容范围
 │   └── cherry-studio.md     # OpenAI 服务商、模型与地址规则
 ├── faq.md                   # 鉴权、模型、限流、到账等问题
-├── public/logo.svg          # 本站自制临时品牌标识
+├── public/
+│   ├── logo.png             # 用户提供的正式平台 Logo，透明 PNG
+│   └── images/              # 登录页截图与浅色/深色配置示意图
 └── .vitepress/
     ├── config.ts            # 导航、侧栏、本地搜索、/docs/ base
     └── theme/               # 品牌样式与移动端布局
@@ -69,7 +75,7 @@ scripts/check-site.mjs       # 产物校验
    ├── faq.html
    ├── tools/
    ├── assets/
-   └── logo.svg
+   └── logo.png
    ```
 
 3. 将 `/opt/mbuild-ai-docs/current` 指向该发布目录。
@@ -97,11 +103,15 @@ GitHub Actions 只校验并保存构建产物，不连接服务器、不修改 S
 - `gpt-5.6-sol` 仅为已确认方案中的示例 ID。模型权限、兼容协议和价格以平台当前展示为准，不给所有用户或客户端承诺此模型可用。
 - API Key 永远使用占位、环境变量或掩码，不提交任何真实密钥。
 - 用户页面不放运维命令或管理员教程；部署说明只在仓库 README 与 `deploy/` 内维护。
-- 截图目前使用文字占位。实际补图前，在 Micro Build AI 的真实页面核对步骤；遮盖密钥、账号、付款个人信息与业务内容，将图片放在 `docs/public/images/` 并补充替代文本。
-- `logo.svg` 为本站自制临时字母标识，后续可替换为正式 Micro Build AI 品牌素材。
+- `docs/public/images/platform-login.jpg` 是 2026-10-04 采集的 Micro Build AI 公开登录页，输入框为空，不含账号或密钥。其他配图为本站自制 SVG 接入示意图，明确标注用途，并有浅色/深色两套资源。
+- 新增教程图使用全局组件 `GuideFigure`，通过 `name` 引用成对的 `*-light.svg` / `*-dark.svg`，或用 `src` 引用实际截图；务必填写 `alt` 与 `caption`。组件通过 `withBase` 兼容 `/docs/`，按主题显示对应图片。
+- 后续添加真实控制台或客户端截图前，核对当前版本步骤；隐藏密钥、账号、付款个人信息与业务内容，将图片放在 `docs/public/images/`。不要将示意图标成实际界面截图。
+- 导航、首页按钮和正文中的 `https://ai.mbuild.top` 平台链接在当前标签页打开；其他站点保持默认外部链接行为。更换域名时也需更新 Markdown 链接规则和产物校验。
+- `logo.png` 使用用户提供的正式平台 Logo 原文件，保留透明背景与原始比例；导航、首页主视觉和 favicon 共用此资源。品牌素材的使用不授予第三方商标权利。
+- Gemini CLI 与 Antigravity CLI 教程使用 Gemini 原生接口，区分站点根地址与管理员指定的 `/antigravity` 通道前缀。Antigravity 桌面 IDE 使用 Google 账号与官方额度，其内置 Agent 不按 CLI 的 API key 配置接入平台。更新教程时分别核对各客户端官方说明。
 
 ## 内容来源
 
 信息架构与新手教程写法参考 [QuantumNous/new-api-docs-v1](https://github.com/QuantumNous/new-api-docs-v1) 的用户指南与工具接入内容，详见 [CONTENT-SOURCES.md](CONTENT-SOURCES.md)。其 `content/docs/` 在核对时采用 CC0 1.0；本项目按 Micro Build AI 的 Sub2API 用户场景重新编写，不导入其 Next.js / Fumadocs 源码、管理员教程、商标、Logo、截图或专用配置脚本。
 
-客户端操作另按官方资料核对。由于没有访问当前生产控制台或使用真实密钥调用，实际模型权限、支付入口、界面差异及客户端端到端连接仍需在上线验收时确认。
+客户端操作另按官方资料核对。本次访问了公开首页与登录页，但没有登录生产控制台或使用真实密钥调用；实际模型权限、支付入口、界面差异及客户端端到端连接仍需在上线验收时确认。
