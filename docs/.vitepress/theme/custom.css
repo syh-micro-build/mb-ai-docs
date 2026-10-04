@@ -1,0 +1,43 @@
+:root {
+  --vp-c-brand-1: #0f766e;
+  --vp-c-brand-2: #0d9488;
+  --vp-c-brand-3: #0f766e;
+  --vp-c-brand-soft: rgba(13, 148, 136, 0.12);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(110deg, #0f766e, #2563eb);
+}
+
+.dark {
+  --vp-c-brand-1: #5eead4;
+  --vp-c-brand-2: #2dd4bf;
+  --vp-c-brand-3: #0f766e;
+  --vp-c-brand-soft: rgba(45, 212, 191, 0.14);
+  --vp-home-hero-name-background: linear-gradient(110deg, #5eead4, #93c5fd);
+}
+
+.VPHome .vp-doc {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+.VPHome .vp-doc h2 {
+  border-top: 0;
+}
+
+.VPHome .vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+.VPHome .vp-doc td {
+  vertical-align: top;
+}
+
+@media (min-width: 640px) {
+  .VPHome .vp-doc { padding-inline: 48px; }
+}
+
+@media (max-width: 639px) {
+  .VPHome .vp-doc table { display: block; overflow-x: auto; }
+}
