@@ -95,7 +95,7 @@ for (const page of pages) {
   }
 }
 
-const requiredPages = ['index.html', 'getting-started.html', 'api-key.html', 'tools/codex.html', 'tools/claude-code.html', 'tools/cc-switch.html', 'tools/cursor.html', 'tools/cherry-studio.html', 'faq.html', '404.html']
+const requiredPages = ['index.html', 'getting-started.html', 'api-key.html', 'tools/codex.html', 'tools/claude-code.html', 'tools/gemini.html', 'tools/antigravity.html', 'tools/cc-switch.html', 'tools/cursor.html', 'tools/cherry-studio.html', 'faq.html', '404.html']
 for (const page of requiredPages) {
   if (!await exists(path.join(root, page))) errors.add(`Missing MVP page: ${page}`)
 }

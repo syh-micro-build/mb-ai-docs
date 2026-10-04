@@ -5,7 +5,7 @@ description: 完成登录、余额确认、创建 API Key 和第一次模型调�
 
 # 5 分钟快速开始
 
-Micro Build AI 为你的 AI 工具提供统一的模型接入入口。你在平台管理余额、密钥和使用记录，在 Codex、Claude Code、Cursor 或 Cherry Studio 中实际使用模型；也可以用 CC Switch 管理编程工具的配置。
+Micro Build AI 为你的 AI 工具提供统一的模型接入入口。你在平台管理余额、密钥和使用记录，在 Codex、Claude Code、Gemini CLI、Antigravity CLI、Cursor 或 Cherry Studio 中实际使用模型；也可以用 CC Switch 管理编程工具的配置。
 
 已经安装工具的用户，可以按下面的步骤完成首次配置。安装、充值到账或网络排查可能需要额外时间。
 
@@ -37,14 +37,14 @@ Micro Build AI 为你的 AI 工具提供统一的模型接入入口。你在平�
 
 | 配置项 | 本站填写方式 |
 | --- | --- |
-| Base URL | Codex、Cursor 通常使用 `https://ai.mbuild.top/v1`；Claude Code 与 Cherry Studio 按各自教程填写根地址。 |
+| Base URL | Codex、Cursor 通常使用 `https://ai.mbuild.top/v1`；其他工具按各自教程填写根地址或指定前缀。 |
 | API Key | 你刚创建的完整密钥。示例 `YOUR_MICRO_BUILD_AI_KEY` 只是占位，不能直接使用。 |
 | Model | 从平台当前模型列表或模型广场复制完整模型 ID，确认该密钥可用。 |
 
 文档中的 `gpt-5.6-sol` 是接入示例。实际可用模型、协议和价格会变化，始终以平台当前显示及密钥权限为准。模型的展示名称可能与调用 ID 不同，请复制调用 ID。
 
 ::: tip 地址不要混用
-`https://ai.mbuild.top/` 是平台网页；`https://ai.mbuild.top/docs/` 是使用文档。Codex 通常填写 `https://ai.mbuild.top/v1`，Claude Code 填写 `https://ai.mbuild.top`。不要把文档地址或完整请求路径填进 Base URL。
+`https://ai.mbuild.top/` 是平台网页；`https://ai.mbuild.top/docs/` 是使用文档。Codex 通常填写 `https://ai.mbuild.top/v1`，Claude Code 与普通 Gemini 原生通道填写 `https://ai.mbuild.top`。Antigravity 专用通道需要管理员另行确认。不要把文档地址或完整请求路径填进 Base URL。
 :::
 
 ## 5. 选择一个工具完成配置
@@ -53,6 +53,8 @@ Micro Build AI 为你的 AI 工具提供统一的模型接入入口。你在平�
 | --- | --- |
 | 在终端里使用 AI 编程助手 | [配置 Codex](/tools/codex)，需要支持 Responses API 的模型。 |
 | 在终端里使用 Claude 编程助手 | [配置 Claude Code](/tools/claude-code)，需要 Claude 模型和 Anthropic Messages 权限。 |
+| 在终端里使用 Gemini | [配置 Gemini CLI](/tools/gemini)，需要 Gemini 模型与原生接口权限。 |
+| 使用 Antigravity | [配置 Antigravity CLI 或了解桌面 IDE](/tools/antigravity)，先确认使用的客户端形态。 |
 | 用图形界面管理编程工具配置 | [配置 CC Switch](/tools/cc-switch)，然后回到对应工具验证。 |
 | 在代码编辑器里使用聊天模型 | [配置 Cursor](/tools/cursor)，先确认版本和模型兼容范围。 |
 | 先体验一段普通对话 | [配置 Cherry Studio](/tools/cherry-studio)。 |
@@ -73,7 +75,7 @@ Micro Build AI 为你的 AI 工具提供统一的模型接入入口。你在平�
 
 ## 可选：先检查密钥和模型列表
 
-如果客户端无法连接，可以先查询模型列表。下面是只读检查，不会发送聊天内容；它只能验证地址和鉴权，不能证明模型推理已成功。
+如果客户端无法连接，可以先查询模型列表。下面是 OpenAI 兼容入口的只读检查，不会发送聊天内容；它只能验证地址和鉴权，不能证明模型推理已成功。使用 Gemini 原生接口的用户，按 [Gemini CLI](/tools/gemini) 或 [Antigravity CLI](/tools/antigravity)教程完成验证。
 
 ::: code-group
 

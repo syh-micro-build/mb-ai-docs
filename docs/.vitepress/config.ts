@@ -4,12 +4,12 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'Micro Build AI',
   titleTemplate: ':title · Micro Build AI 使用文档',
-  description: 'Micro Build AI 使用文档：快速开始、API Key、Codex、Claude Code、CC Switch、Cursor、Cherry Studio 与常见问题。',
+  description: 'Micro Build AI 使用文档：快速开始、API Key、Codex、Claude Code、Gemini CLI、Antigravity、CC Switch、Cursor、Cherry Studio 与常见问题。',
   base: '/docs/',
   cleanUrls: true,
   ignoreDeadLinks: false,
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/docs/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/docs/logo.png' }],
     ['meta', { name: 'theme-color', content: '#0f766e' }],
     ['meta', { name: 'referrer', content: 'strict-origin-when-cross-origin' }]
   ],
@@ -29,7 +29,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
-    logo: { src: '/logo.svg', alt: 'Micro Build AI' },
+    logo: { src: '/logo.png', alt: 'Micro Build AI' },
     siteTitle: 'Micro Build AI',
     nav: [
       { text: '快速开始', link: '/getting-started' },
@@ -40,6 +40,8 @@ export default defineConfig({
         items: [
           { text: 'Codex', link: '/tools/codex' },
           { text: 'Claude Code', link: '/tools/claude-code' },
+          { text: 'Gemini CLI', link: '/tools/gemini' },
+          { text: 'Antigravity', link: '/tools/antigravity' },
           { text: 'CC Switch', link: '/tools/cc-switch' },
           { text: 'Cursor', link: '/tools/cursor' },
           { text: 'Cherry Studio', link: '/tools/cherry-studio' }
@@ -61,6 +63,8 @@ export default defineConfig({
         items: [
           { text: 'Codex', link: '/tools/codex' },
           { text: 'Claude Code', link: '/tools/claude-code' },
+          { text: 'Gemini CLI', link: '/tools/gemini' },
+          { text: 'Antigravity', link: '/tools/antigravity' },
           { text: 'Cursor', link: '/tools/cursor' }
         ]
       },

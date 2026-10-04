@@ -41,12 +41,14 @@ docs/
 ├── tools/
 │   ├── codex.md             # Responses / 自定义服务商
 │   ├── claude-code.md       # Anthropic Messages / 环境变量
+│   ├── gemini.md            # Gemini CLI / 原生接口与认证
+│   ├── antigravity.md       # CLI 接入 / 桌面 IDE 入门与边界
 │   ├── cc-switch.md         # 按应用管理 Codex 与 Claude 配置
 │   ├── cursor.md            # BYOK 与版本、模型兼容范围
 │   └── cherry-studio.md     # OpenAI 服务商、模型与地址规则
 ├── faq.md                   # 鉴权、模型、限流、到账等问题
 ├── public/
-│   ├── logo.svg             # 本站自制临时品牌标识
+│   ├── logo.png             # 用户提供的正式平台 Logo，透明 PNG
 │   └── images/              # 登录页截图与浅色/深色配置示意图
 └── .vitepress/
     ├── config.ts            # 导航、侧栏、本地搜索、/docs/ base
@@ -73,7 +75,7 @@ scripts/check-site.mjs       # 产物校验
    ├── faq.html
    ├── tools/
    ├── assets/
-   └── logo.svg
+   └── logo.png
    ```
 
 3. 将 `/opt/mbuild-ai-docs/current` 指向该发布目录。
@@ -105,7 +107,8 @@ GitHub Actions 只校验并保存构建产物，不连接服务器、不修改 S
 - 新增教程图使用全局组件 `GuideFigure`，通过 `name` 引用成对的 `*-light.svg` / `*-dark.svg`，或用 `src` 引用实际截图；务必填写 `alt` 与 `caption`。组件通过 `withBase` 兼容 `/docs/`，按主题显示对应图片。
 - 后续添加真实控制台或客户端截图前，核对当前版本步骤；隐藏密钥、账号、付款个人信息与业务内容，将图片放在 `docs/public/images/`。不要将示意图标成实际界面截图。
 - 导航、首页按钮和正文中的 `https://ai.mbuild.top` 平台链接在当前标签页打开；其他站点保持默认外部链接行为。更换域名时也需更新 Markdown 链接规则和产物校验。
-- `logo.svg` 为本站自制临时字母标识，后续可替换为正式 Micro Build AI 品牌素材。
+- `logo.png` 使用用户提供的正式平台 Logo 原文件，保留透明背景与原始比例；导航、首页主视觉和 favicon 共用此资源。品牌素材的使用不授予第三方商标权利。
+- Gemini CLI 与 Antigravity CLI 教程使用 Gemini 原生接口，区分站点根地址与管理员指定的 `/antigravity` 通道前缀。Antigravity 桌面 IDE 使用 Google 账号与官方额度，其内置 Agent 不按 CLI 的 API key 配置接入平台。更新教程时分别核对各客户端官方说明。
 
 ## 内容来源
 
