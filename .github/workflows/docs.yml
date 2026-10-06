@@ -95,3 +95,41 @@ jobs:
       - name: Stop Docker container
         if: always()
         run: docker rm --force mb-ai-docs-smoke || true
+  publish-image:
+    name: Publish Docker image
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    needs:
+      - validate
+      - docker-smoke
+
+    if: github.event_name != 'pull_request'
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Log in to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" \
+            | docker login ghcr.io \
+              --username "${{ github.actor }}" \
+              --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            --tag "ghcr.io/syh-micro-build/mb-ai-docs:sha-${{ github.sha }}" \
+            .
+
+      - name: Push Docker image
+        run: |
+          docker push \
+            "ghcr.io/syh-micro-build/mb-ai-docs:sha-${{ github.sha }}"
