@@ -1,0 +1,12 @@
+services:
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: mb-ai-docs:0.1.0-local
+
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:8081:80"
