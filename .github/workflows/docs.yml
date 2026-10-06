@@ -45,3 +45,53 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 7
+  docker-smoke:
+    name: Docker smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Build Docker image
+        run: docker build --tag mb-ai-docs:ci .
+
+      - name: Start Docker container
+        run: |
+          docker run \
+            --detach \
+            --name mb-ai-docs-smoke \
+            --publish 127.0.0.1:8081:80 \
+            mb-ai-docs:ci
+
+      - name: Wait for documentation service
+        run: |
+          for i in {1..10}; do
+            if curl --fail --silent http://127.0.0.1:8081/docs/ > /dev/null; then
+              exit 0
+            fi
+
+            sleep 1
+          done
+
+          docker logs mb-ai-docs-smoke
+          exit 1
+
+      - name: Verify documentation routes
+        run: |
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:8081/docs/)" = "200"
+
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:8081/docs/tools/codex)" = "200"
+
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:8081/docs/test-not-exists-123456)" = "404"
+
+      - name: Show container logs on failure
+        if: failure()
+        run: docker logs mb-ai-docs-smoke
+
+      - name: Stop Docker container
+        if: always()
+        run: docker rm --force mb-ai-docs-smoke || true
